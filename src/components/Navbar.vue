@@ -71,10 +71,10 @@ export default {
 }
 
 .header {
-	font-weight: 300;
+	font-weight: 500;
 	font-size: 2rem;
 	margin: 30px;
-	color: #d40406;
+	/* color: #d40406; */
 }
 
 li {
