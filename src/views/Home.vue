@@ -4,6 +4,7 @@
     <Hero/>
     <Triad/>
     <Sales/>
+    <FeaturedProducts/>
   </div>
 </template>
 
@@ -13,6 +14,7 @@ import Navbar from "@/components/Navbar.vue";
 import Hero from "@/components/Hero.vue";
 import Triad from "@/components/Triad.vue";
 import Sales from "@/components/Sales.vue";
+import FeaturedProducts from "@/components/FeaturedProducts.vue"
 
 
 export default {
@@ -21,7 +23,8 @@ export default {
     Navbar,
     Hero,
     Triad,
-    Sales
+    Sales,
+    FeaturedProducts
   },
   data() {
     return {
