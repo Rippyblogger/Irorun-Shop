@@ -1,37 +1,44 @@
 <template>
 	<div class="price-grid">
 		<!-- <p>fdgdfhd</p> -->
-		<div v-for="item in items" :key="item.index" class="price">
+		<div v-for="item in topItems" :key="item.index" class="price">
 			<img class="image-size" :src="item.image" alt="" />
 			<h3>{{ item.itemName }}</h3>
 			<p>$ {{ item.price }}</p>
-			<button>Add To Cart</button>
+			<button @click="increaseCounter">Add To Cart</button>
 		</div>
+
+        <!-- <div>
+            Number of Cart items: {{cartCounter}}
+        </div> -->
 	</div>
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex';
+
 export default {
 	name: "TopProd",
 	data() {
 		return {
-			items:[{
-			    image:require("../assets/Top/Sneaker1.png"),
-			    itemName:"Airmax",
-			    price: 119.99
-			},
-			{
-			    image:require("../assets/Top/Sneaker2.png"),
-			    itemName:"Airfly `99",
-			    price: 119.99
-			},
-			{
-			    image:require("../assets/Top/Sneaker3.png"),
-			    itemName:"Roshe 12",
-			    price: 119.99
-			}]
+            
 		};
 	},
+    computed: {
+
+        ...mapState([
+            'cartCounter',
+            'topItems',
+        ]),
+    },
+    methods: {
+        ...mapActions(['updateCounter']),
+        increaseCounter(){
+            let payload = this.cartCounter;
+            payload++;
+            this.updateCounter(payload);
+        }
+    },
 };
 </script>
 

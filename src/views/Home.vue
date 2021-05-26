@@ -5,6 +5,8 @@
     <Triad/>
     <Sales/>
     <FeaturedProducts/>
+    <LowHeader/>
+    <Footer/>
   </div>
 </template>
 
@@ -14,8 +16,9 @@ import Navbar from "@/components/Navbar.vue";
 import Hero from "@/components/Hero.vue";
 import Triad from "@/components/Triad.vue";
 import Sales from "@/components/Sales.vue";
-import FeaturedProducts from "@/components/FeaturedProducts.vue"
-
+import FeaturedProducts from "@/components/FeaturedProducts.vue";
+import LowHeader from "@/components/LowHeader.vue";
+import Footer from "@/components/Footer.vue"
 
 export default {
   name: "Home",
@@ -24,7 +27,9 @@ export default {
     Hero,
     Triad,
     Sales,
-    FeaturedProducts
+    FeaturedProducts,
+    LowHeader,
+    Footer
   },
   data() {
     return {
