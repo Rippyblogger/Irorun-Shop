@@ -3,7 +3,7 @@
 		<div class="header">
 			<p>Irorun Shop</p>
 			<img
-        @click="navSwitch"
+				@click="navSwitch"
 				v-if="displayed"
 				class="burger"
 				src="../assets/icons8-menu-90.png"
@@ -14,11 +14,11 @@
 		<div class="navi">
 			<hr />
 			<ul class="flex-cont" v-if="navShow">
-				<li><a href="">HOME</a></li>
-				<li><a href="">ALL</a></li>
-				<li><a href="">WOMEN</a></li>
-				<li><a href="">MEN</a></li>
-				<li><a href="">CART</a></li>
+				<li><router-link to="/">HOME</router-link></li>
+				<li><router-link to="/All">ALL</router-link></li>
+				<li><router-link to="/Women">WOMEN</router-link></li>
+				<li><router-link to="/Men">MEN</router-link></li>
+				<li><router-link to="/Cart">CART</router-link></li>
 			</ul>
 			<hr />
 		</div>
@@ -35,39 +35,38 @@ export default {
 		return {
 			displayed: false,
 			Width: window.innerWidth,
-      navShow: true,
+			navShow: true,
 		};
 	},
 	created() {
-        window.addEventListener('resize', this.handleResize);
-        this.handleResize();
-    },
-    destroyed() {
-        window.removeEventListener('resize', this.handleResize);
-    },
-    methods: {
-        handleResize() {
-            this.Width = window.innerWidth;
-            if(this.Width <= 767){
-              this.displayed = !this.displayed
-              this.navShow = !this.navShow
-            }else if(this.Width > 767){
-              this.displayed = false
-            }
-        },
+		window.addEventListener("resize", this.handleResize);
+		this.handleResize();
+	},
+	destroyed() {
+		window.removeEventListener("resize", this.handleResize);
+	},
+	methods: {
+		handleResize() {
+			this.Width = window.innerWidth;
+			if (this.Width <= 767) {
+				this.displayed = !this.displayed;
+				this.navShow = !this.navShow;
+			} else if (this.Width > 767) {
+				this.displayed = false;
+			}
+		},
 
-        navSwitch(){
-          this.navShow = !this.navShow
-        }
-    }
+		navSwitch() {
+			this.navShow = !this.navShow;
+		},
+	},
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
-.hello{
-  box-sizing: border-box;
+.hello {
+	box-sizing: border-box;
 }
 
 .header {
@@ -115,7 +114,7 @@ hr {
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
-    align-items: center;
+		align-items: center;
 	}
 
 	.flex-cont {
@@ -123,14 +122,14 @@ hr {
 	}
 
 	.burger {
-    height: 2rem;
+		height: 2rem;
 	}
 
-  .burger:hover{
-    border: 1px solid #d62828;
-    padding: 2px;
-    border-radius: 5px;
-  }
+	.burger:hover {
+		border: 1px solid #d62828;
+		padding: 2px;
+		border-radius: 5px;
+	}
 
 	hr {
 		display: none;
