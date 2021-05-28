@@ -1,15 +1,17 @@
 <template>
 	<div class="price-grid">
 		<div v-for="item in storeItems" :key="item.index" class="price">
-			<img class="image-size" :src="item.image" alt="" />
+			<div class="img-div">
+                <img class="image-size" :src="item.image" alt="" />
+            </div>
 			<h3>{{ item.itemName }}</h3>
 			<p>$ {{ item.price }}</p>
-			<button @click="increaseCounter">Add To Cart</button>
+			<button @click="cartAdd">Add To Cart</button>
 		</div>
 
-        <!-- <div>
-            Number of Cart items: {{cartCounter}}
-        </div> -->
+        <div>
+            Number of Cart items: {{cartCount}}
+        </div>
 	</div>
 </template>
 
@@ -18,7 +20,9 @@
 export default {
 	name: "TopProd",
     props: {
-        storeItems: Array
+        storeItems: Array,
+        cartAdd: Function,
+        cartCount: Number
     },
 	data() {
 		return {
@@ -40,8 +44,13 @@ export default {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
+/* .img-div{
+    height: 100px;
+} */
+
 .image-size{
     width: 50%;
+    height: auto;
 }
 
 button{

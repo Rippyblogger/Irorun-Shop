@@ -2,21 +2,20 @@
 	<div class="home">
 		<Navbar />
 		<div class="grid-box">
-			<ItemList :storeItems="maleItems"/>
+			<ItemList :storeItems="maleItems" :cartAdd="increaseCounter" :cartCount="cartCounter" />
 			<Wording class="order1" />
 		</div>
 	</div>
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex';
+import { mapActions, mapState, mapGetters } from 'vuex';
 import Navbar from "@/components/Navbar.vue";
 import ItemList from "@/components/ItemList.vue";
 import Wording from "@/components/Wording.vue";
 
 export default {
 	name: "Men",
-	domo:"SDfsdfsdf",
 	components: {
 		Navbar,
 		ItemList,
@@ -24,12 +23,14 @@ export default {
 	},
 	data() {
 		return {
-			domo: "sddgsfdgsfd",
-			fofo: [1,2,3,4]
+			
 		};
 	},
 	computed: {
-		...mapState(["cartCounter", "maleItems"]),
+		...mapState(["cartCounter"]),
+		...mapGetters(["maleItems"]),
+		
+		
 	},
 	methods: {
 		...mapActions(["updateCounter"]),
