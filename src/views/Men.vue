@@ -1,25 +1,43 @@
 <template>
 	<div class="home">
 		<Navbar />
-		<Hero />
-		<Triad />
+		<div class="grid-box">
+			<ItemList :storeItems="maleItems"/>
+			<Wording class="order1" />
+		</div>
 	</div>
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex';
 import Navbar from "@/components/Navbar.vue";
-import Hero from "@/components/Hero.vue";
-import Triad from "@/components/Triad.vue";
+import ItemList from "@/components/ItemList.vue";
+import Wording from "@/components/Wording.vue";
 
 export default {
 	name: "Men",
+	domo:"SDfsdfsdf",
 	components: {
 		Navbar,
-		Hero,
-		Triad,
+		ItemList,
+		Wording,
 	},
 	data() {
-		return {};
+		return {
+			domo: "sddgsfdgsfd",
+			fofo: [1,2,3,4]
+		};
+	},
+	computed: {
+		...mapState(["cartCounter", "maleItems"]),
+	},
+	methods: {
+		...mapActions(["updateCounter"]),
+		increaseCounter() {
+			let payload = this.cartCounter;
+			payload++;
+			this.updateCounter(payload);
+		},
 	},
 };
 </script>
@@ -28,5 +46,21 @@ export default {
 .home {
 	padding: 0;
 	margin: 0;
+}
+
+.grid-box {
+	display: grid;
+	grid-template-columns: 75% 25%;
+}
+
+@media only screen and (max-width: 767px) {
+	.grid-box {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.order1 {
+		order: -1;
+	}
 }
 </style>
