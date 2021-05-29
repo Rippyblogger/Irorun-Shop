@@ -93,6 +93,10 @@ li a:hover {
 	color: #d62828;
 }
 
+li router-link:active{
+	color: #d62828;
+}
+
 .flex-cont {
 	display: flex;
 	flex-direction: row;

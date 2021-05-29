@@ -2,7 +2,7 @@
 	<div class="home">
 		<Navbar />
 		<div class="grid-box">
-			<ItemList :storeItems="maleItems" :cartAdd="increaseCounter" :cartCount="cartCounter" />
+			<ItemList :storeItems="maleItems" :cartAdd="increaseCounter" :cartCount="cartCounter" class="pushdown"/>
 			<Wording class="order1" />
 		</div>
 	</div>
@@ -20,6 +20,9 @@ export default {
 		Navbar,
 		ItemList,
 		Wording,
+	},
+	props: {
+		myRange: Number
 	},
 	data() {
 		return {
@@ -62,6 +65,10 @@ export default {
 
 	.order1 {
 		order: -1;
+	}
+
+	.pushdown{
+		margin-top: 5rem;
 	}
 }
 </style>
