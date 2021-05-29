@@ -1,25 +1,37 @@
 <template>
 	<div class="home">
 		<Navbar />
-		<Hero />
-		<Triad />
+		<Steps/>
+		<CartView :cartShow="cartCounter"/>
+		<Triad/>
+		<Footer/>
 	</div>
 </template>
 
 <script>
 import Navbar from "@/components/Navbar.vue";
-import Hero from "@/components/Hero.vue";
 import Triad from "@/components/Triad.vue";
+import Steps from "@/components/Steps.vue";
+import Footer from "@/components/Footer.vue";
+import CartView from "@/components/CartView.vue"
+import {mapState} from 'vuex';
 
 export default {
 	name: "Cart",
 	components: {
 		Navbar,
-		Hero,
 		Triad,
+		Steps,
+		Footer,
+		CartView
 	},
 	data() {
-		return {};
+		return {
+			
+		};
+	},
+	computed: {
+		...mapState(["cartCounter"]),
 	},
 };
 </script>

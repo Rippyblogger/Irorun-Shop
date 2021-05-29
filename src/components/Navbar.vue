@@ -80,8 +80,8 @@ li {
 	margin: 0 10px;
 	list-style-type: none;
 	padding: 0 2rem;
-	border-left: 1px solid black;
-	border-right: 1px solid black;
+	border-left: 1px solid grey;
+	border-right: 1px solid grey;
 }
 
 li a {

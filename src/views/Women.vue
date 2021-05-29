@@ -2,7 +2,7 @@
 	<div class="home">
 		<Navbar />
 		<div class="grid-box">
-			<ItemList :storeItems="femaleItems" :cartAdd="increaseCounter" :cartCount="cartCounter" />
+			<ItemList class="pushdown" :storeItems="femaleItems" :cartAdd="increaseCounter" :cartCount="cartCounter" />
 			<Wording class="order1" />
 		</div>
 	</div>
@@ -60,6 +60,10 @@ export default {
 
 	.order1 {
 		order: -1;
+	}
+
+	.pushdown{
+		margin-top: 5rem;
 	}
 }
 </style>
