@@ -2,7 +2,7 @@
 	<div class="home">
 		<Navbar />
 		<Steps/>
-		<CartView :cartShow="cartCounter"/>
+		<CartView :cartShow="cartCounter" />
 		<Triad/>
 		<Footer/>
 	</div>
@@ -14,7 +14,7 @@ import Triad from "@/components/Triad.vue";
 import Steps from "@/components/Steps.vue";
 import Footer from "@/components/Footer.vue";
 import CartView from "@/components/CartView.vue"
-import {mapState} from 'vuex';
+import {mapState, mapGetters} from 'vuex';
 
 export default {
 	name: "Cart",
@@ -32,6 +32,7 @@ export default {
 	},
 	computed: {
 		...mapState(["cartCounter"]),
+		...mapGetters(["myCart"])
 	},
 };
 </script>

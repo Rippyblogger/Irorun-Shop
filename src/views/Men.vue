@@ -3,7 +3,9 @@
 		<Navbar />
 		<div class="grid-box">
 			<ItemList :storeItems="maleItems" :cartAdd="increaseCounter" :cartCount="cartCounter" class="pushdown"/>
-			<Wording class="order1" />
+
+			<!-- <ItemList :storeItems="maleItems" :cartCount="cartCounter" class="pushdown"/>
+			<Wording class="order1" /> -->
 		</div>
 	</div>
 </template>
@@ -30,16 +32,17 @@ export default {
 		};
 	},
 	computed: {
-		...mapState(["cartCounter"]),
+		...mapState(["cartCounter","cartItems"]),
 		...mapGetters(["maleItems"]),
 		
 		
 	},
 	methods: {
 		...mapActions(["updateCounter"]),
-		increaseCounter() {
-			let payload = this.cartCounter;
-			payload++;
+		increaseCounter(x) {
+			let payload = this.cartItems;
+			payload.push(x)
+			console.log(payload)
 			this.updateCounter(payload);
 		},
 	},

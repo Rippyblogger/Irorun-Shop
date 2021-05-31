@@ -6,7 +6,7 @@
 			</div>
 			<h3>{{ item.itemName }}</h3>
 			<p>$ {{ item.price }}</p>
-			<button @click="cartAdd">Add To Cart</button>
+			<button :id="item.id" @click="cartAdd(item.id)">Add To Cart</button>
 		</div>
 
 		<div>Number of Cart items: {{ cartCount }}</div>
@@ -23,7 +23,7 @@ export default {
 	},
 	data() {
 		return {
-			
+			rangeVal: 0
 		};
 	},
 };
