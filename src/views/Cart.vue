@@ -1,10 +1,10 @@
 <template>
 	<div class="home">
 		<Navbar />
-		<Steps/>
+		<Steps />
 		<CartView :cartShow="cartCounter" />
-		<Triad/>
-		<Footer/>
+		<Triad />
+		<Footer />
 	</div>
 </template>
 
@@ -13,8 +13,8 @@ import Navbar from "@/components/Navbar.vue";
 import Triad from "@/components/Triad.vue";
 import Steps from "@/components/Steps.vue";
 import Footer from "@/components/Footer.vue";
-import CartView from "@/components/CartView.vue"
-import {mapState, mapGetters} from 'vuex';
+import CartView from "@/components/CartView.vue";
+import { mapState, mapGetters } from "vuex";
 
 export default {
 	name: "Cart",
@@ -23,16 +23,14 @@ export default {
 		Triad,
 		Steps,
 		Footer,
-		CartView
+		CartView,
 	},
 	data() {
-		return {
-			
-		};
+		return {};
 	},
 	computed: {
 		...mapState(["cartCounter"]),
-		...mapGetters(["myCart"])
+		...mapGetters(["myCart"]),
 	},
 };
 </script>

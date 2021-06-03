@@ -8,32 +8,44 @@ export default new Vuex.Store({
 		topItems: [
 			{
 				image: require("../assets/Top/Sneaker1.png"),
-				itemName: "Airmax",
-				price: 119.99,
+				itemName: "Air max 1",
+				price: 159.99,
+				gender: "Male",
+				id: "21",
 			},
 			{
-				image: require("../assets/Top/Sneaker2.png"),
-				itemName: "Airfly `99",
-				price: 149.99,
+				image: require("../assets/Male/Male2.png"),
+				itemName: "Air fly `99",
+				price: 144.99,
+				gender: "Male",
+				id: "1",
 			},
 			{
-				image: require("../assets/Top/Sneaker3.png"),
-				itemName: "Roshe 12",
-				price: 99.95,
+				image: require("../assets/Male/Male10.png"),
+				itemName: "Roju 12",
+				price: 97.95,
+				gender: "Male",
+				id: "9",
 			},
 		],
-		cartCounter: 0,
 		allItems: [
 			{
+				image: require("../assets/Top/Sneaker1.png"),
+				itemName: "Air max 1",
+				price: 159.99,
+				gender: "Male",
+				id: "21",
+			},
+			{
 				image: require("../assets/Male/Male1.png"),
-				itemName: "Airmax",
+				itemName: "Kollington",
 				price: 105.99,
 				gender: "Male",
 				id: "20",
 			},
 			{
 				image: require("../assets/Male/Male2.png"),
-				itemName: "Airfly `99",
+				itemName: "Air fly `99",
 				price: 144.99,
 				gender: "Male",
 				id: "1",
@@ -47,91 +59,91 @@ export default new Vuex.Store({
 			},
 			{
 				image: require("../assets/Male/Male4.png"),
-				itemName: "Roshe 12",
+				itemName: "Swish",
 				price: 94.95,
 				gender: "Male",
 				id: "3",
 			},
 			{
 				image: require("../assets/Male/Male5.png"),
-				itemName: "Roshe 12",
+				itemName: "Tangiro 3",
 				price: 111.95,
 				gender: "Male",
 				id: "4",
 			},
 			{
 				image: require("../assets/Male/Male6.png"),
-				itemName: "Roshe 12",
+				itemName: "Rengoku",
 				price: 124.95,
 				gender: "Male",
 				id: "5",
 			},
 			{
 				image: require("../assets/Male/Male7.png"),
-				itemName: "Roshe 12",
+				itemName: "Rush 5",
 				price: 104.95,
 				gender: "Male",
 				id: "6",
 			},
 			{
 				image: require("../assets/Male/Male8.png"),
-				itemName: "Roshe 12",
+				itemName: "Pison 3",
 				price: 128.95,
 				gender: "Male",
 				id: "7",
 			},
 			{
 				image: require("../assets/Male/Male9.png"),
-				itemName: "Roshe 12",
+				itemName: "Eren",
 				price: 115.95,
 				gender: "Male",
 				id: "8",
 			},
 			{
 				image: require("../assets/Male/Male10.png"),
-				itemName: "Roshe 12",
+				itemName: "Spire",
 				price: 97.95,
 				gender: "Male",
 				id: "9",
 			},
 			{
 				image: require("../assets/Female/Female1.png"),
-				itemName: "Airmax",
+				itemName: "Kaneo Sparkle",
 				price: 96.99,
 				gender: "Female",
 				id: "10",
 			},
 			{
 				image: require("../assets/Female/Female2.png"),
-				itemName: "Airfly `99",
+				itemName: "clean 33",
 				price: 125.99,
 				gender: "Female",
 				id: "11",
 			},
 			{
 				image: require("../assets/Female/Female3.png"),
-				itemName: "Roshe 12",
+				itemName: "Pink Alice",
 				price: 100.95,
 				gender: "Female",
 				id: "12",
 			},
 			{
 				image: require("../assets/Female/Female4.png"),
-				itemName: "Roshe 12",
+				itemName: "Pink Rose",
 				price: 129.95,
 				gender: "Female",
 				id: "13",
 			},
 			{
 				image: require("../assets/Female/Female5.png"),
-				itemName: "Roshe 12",
+				itemName: "Pink Balance",
 				price: 113.95,
 				gender: "Female",
 				id: "14",
 			},
 			{
 				image: require("../assets/Female/Female6.png"),
-				itemName: "Roshe 12",
+				itemName: "Sturdy",
 				price: 98.95,
 				gender: "Female",
 				id: "15",
@@ -145,21 +157,21 @@ export default new Vuex.Store({
 			},
 			{
 				image: require("../assets/Female/Female8.png"),
-				itemName: "Roshe 12",
+				itemName: "Church Mummy",
 				price: 130.95,
 				gender: "Female",
 				id: "17",
 			},
 			{
 				image: require("../assets/Female/Female9.png"),
-				itemName: "Roshe 12",
+				itemName: "Shine Shine",
 				price: 121.95,
 				gender: "Female",
 				id: "18",
 			},
 			{
 				image: require("../assets/Female/Female10.png"),
-				itemName: "Roshe 12",
+				itemName: "Pro Runner",
 				price: 99.95,
 				gender: "Female",
 				id: "19",
@@ -195,12 +207,16 @@ export default new Vuex.Store({
 			});
 		},
 		myCart: (state) => {
-			let koko = state.allItems.filter((f) =>
-				state.cartItems.includes(parseInt(f.id))
-			);
-
-			console.log(koko);
+			const koko = state.cartItems.reduce((acc, curr) => {
+				const isExist = state.allItems.find((o) => o.id === curr.toString());
+				if (isExist) acc.push(isExist);
+				return acc;
+			}, []);
 			return koko;
+		},
+		cartCounter: (state) => {
+			let mynum = state.cartItems.length;
+			return mynum;
 		},
 	},
 });

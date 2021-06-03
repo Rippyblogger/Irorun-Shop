@@ -2,10 +2,12 @@
 	<div class="price-grid">
 		<!-- <p>fdgdfhd</p> -->
 		<div v-for="item in topItems" :key="item.index" class="price">
-			<img class="image-size" :src="item.image" alt="" />
+			<div class="img-div">
+                <img class="image-size" :src="item.image" alt="" />
+            </div>
 			<h3>{{ item.itemName }}</h3>
 			<p>$ {{ item.price }}</p>
-			<button @click="increaseCounter">Add To Cart</button>
+			<button @click="increaseCounter(item.id)">Add To Cart</button>
 		</div>
 
         <!-- <div>
@@ -15,7 +17,7 @@
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex';
+import { mapActions, mapState,mapGetters } from 'vuex';
 
 export default {
 	name: "TopProd",
@@ -27,16 +29,17 @@ export default {
     computed: {
 
         ...mapState([
-            'cartCounter',
             'topItems',
+            'cartItems',
         ]),
+        ...mapGetters(["cartCounter"]),
     },
     methods: {
         ...mapActions(['updateCounter']),
-        increaseCounter(){
-            let payload = this.cartCounter;
-            payload++;
-            this.updateCounter(payload);
+        increaseCounter(x){
+            let payload = this.cartItems;
+			payload.push(x);
+			this.updateCounter(payload);
         }
     },
 };
@@ -68,6 +71,10 @@ button{
 
 button:hover{
     transform: scale(1.1);
+}
+
+.img-div {
+	height: 6rem;
 }
 
 @media only screen and (max-width: 767px){

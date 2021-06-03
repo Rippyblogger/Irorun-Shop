@@ -1,29 +1,32 @@
 <template>
 	<div>
-		<h3>Special Sale</h3>
+		<div>
+			<h3>Special Sale</h3>
 		<p>
 			Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae,
 			laboriosam cumque blanditiis quia quis doloremque voluptas pariatur omnis
 			reiciendis quod!
 		</p>
-		<p>Filter by price:</p>
-		<p>Max price: $</p>
+		</div>
+		
 
 		<div>
-			<input type="range" name="filter" id="filter" min="0" max="150" v-model="myRange" />
+			<p>Number of items in Cart: {{cartCount}}</p>
 		</div>
 	</div>
 </template>
 
 <script>
+
 export default {
 	name: "Wording",
+	props: {
+		cartCount: Number,
+	},
     data() {
         return {
-            myRange: 0,
         }
     },
-    
 };
 </script>
 
@@ -36,6 +39,10 @@ input{
 p{
 
     text-justify: auto;
+}
+
+h3{
+	color: #d62828;
 }
 
 </style>

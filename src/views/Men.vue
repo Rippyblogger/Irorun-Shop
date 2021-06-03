@@ -2,10 +2,8 @@
 	<div class="home">
 		<Navbar />
 		<div class="grid-box">
-			<ItemList :storeItems="maleItems" :cartAdd="increaseCounter" :cartCount="cartCounter" class="pushdown"/>
-
-			<!-- <ItemList :storeItems="maleItems" :cartCount="cartCounter" class="pushdown"/>
-			<Wording class="order1" /> -->
+			<ItemList :storeItems="maleItems" :cartAdd="increaseCounter" class="pushdown"/>
+			<Wording class="order1" :cartCount="cartCounter" /> 
 		</div>
 	</div>
 </template>
@@ -23,17 +21,14 @@ export default {
 		ItemList,
 		Wording,
 	},
-	props: {
-		myRange: Number
-	},
 	data() {
 		return {
 			
 		};
 	},
 	computed: {
-		...mapState(["cartCounter","cartItems"]),
-		...mapGetters(["maleItems"]),
+		...mapState(["cartItems"]),
+		...mapGetters(["cartCounter","maleItems"]),
 		
 		
 	},
@@ -41,8 +36,7 @@ export default {
 		...mapActions(["updateCounter"]),
 		increaseCounter(x) {
 			let payload = this.cartItems;
-			payload.push(x)
-			console.log(payload)
+			payload.push(x);
 			this.updateCounter(payload);
 		},
 	},

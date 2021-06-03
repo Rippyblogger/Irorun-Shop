@@ -11,6 +11,10 @@
 				:cartCount="cartCounter"
 			/>
 		</div>
+
+		<div class="checkout">
+			<button>Proceed to Checkout</button>
+		</div>
 	</div>
 </template>
 
@@ -45,5 +49,21 @@ export default {
 <style scoped>
 p {
 	font-size: 1.3rem;
+}
+
+button {
+	background-color: #d62828;
+	color: white;
+	border: none;
+	padding: 0.5rem;
+	border-radius: 5px;
+}
+
+button:hover {
+	transform: scale(1.1);
+}
+
+.checkout{
+	margin-top: 1rem;
 }
 </style>

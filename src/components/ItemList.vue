@@ -9,7 +9,6 @@
 			<button :id="item.id" @click="cartAdd(item.id)">Add To Cart</button>
 		</div>
 
-		<div>Number of Cart items: {{ cartCount }}</div>
 	</div>
 </template>
 
@@ -23,7 +22,6 @@ export default {
 	},
 	data() {
 		return {
-			rangeVal: 0
 		};
 	},
 };
@@ -46,6 +44,7 @@ export default {
 
 .img-div {
 	height: 6rem;
+	padding-bottom: 1.5rem;
 }
 
 .image-size {

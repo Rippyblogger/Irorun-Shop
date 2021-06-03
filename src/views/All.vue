@@ -2,14 +2,14 @@
 	<div class="home">
 		<Navbar />
 		<div class="grid-box">
-			<ItemList :storeItems="allItems" :cartAdd="increaseCounter" :cartCount="cartCounter" />
-			<Wording class="order1" />
+			<ItemList class="pushdown" :storeItems="allItems" :cartAdd="increaseCounter" />
+			<Wording class="order1" :cartCount="cartCounter" /> 
 		</div>
 	</div>
 </template>
 
 <script>
-import { mapActions, mapState} from 'vuex';
+import { mapActions, mapState, mapGetters} from 'vuex';
 import Navbar from "@/components/Navbar.vue";
 import ItemList from "@/components/ItemList.vue";
 import Wording from "@/components/Wording.vue";
@@ -27,15 +27,16 @@ export default {
 		};
 	},
 	computed: {
-		...mapState(["cartCounter", "allItems"]),
+		...mapState(["cartItems", "allItems"]),
+		...mapGetters(["cartCounter"]),
 		
 		
 	},
 	methods: {
 		...mapActions(["updateCounter"]),
-		increaseCounter() {
-			let payload = this.cartCounter;
-			payload++;
+		increaseCounter(x) {
+			let payload = this.cartItems;
+			payload.push(x);
 			this.updateCounter(payload);
 		},
 	},
@@ -61,6 +62,10 @@ export default {
 
 	.order1 {
 		order: -1;
+	}
+
+	.pushdown{
+		margin-top: 5rem;
 	}
 }
 </style>
