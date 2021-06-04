@@ -6,7 +6,7 @@
 			</div>
 			<h3>{{ item.itemName }}</h3>
 			<p>$ {{ item.price }}</p>
-			<button :id="item.id" @click="cartAdd(item.id)">Add To Cart</button>
+			<button :id="item.id" @click="cartRemove(item.id)">Remove from Cart</button>
 		</div>
 
 	</div>
@@ -17,7 +17,7 @@ export default {
 	name: "TopProd",
 	props: {
 		storeItems: Array,
-		cartAdd: Function,
+		cartRemove: Function,
 		cartCount: Number,
 	},
 	data() {
@@ -34,7 +34,8 @@ export default {
 
 .price-grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+	margin-top: 2rem;
 }
 
 .price:hover {
@@ -44,15 +45,15 @@ export default {
 
 .img-div {
 	height: 6rem;
-	padding-bottom: 1.5rem;
+	padding-bottom: 5.5rem;
 }
 
 .image-size {
-	width: 50%;
+	width: 30%;
 }
 
 .image-size:hover {
-	transform: scale(1.3);
+	transform: scale(1.4);
 }
 
 button {

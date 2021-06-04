@@ -115,7 +115,7 @@ export default new Vuex.Store({
 			},
 			{
 				image: require("../assets/Female/Female2.png"),
-				itemName: "clean 33",
+				itemName: "Clean 33",
 				price: 125.99,
 				gender: "Female",
 				id: "11",
@@ -177,7 +177,7 @@ export default new Vuex.Store({
 				id: "19",
 			},
 		],
-		rangeValue: 0,
+		atest: [],
 		cartItems: [],
 	},
 	mutations: {
@@ -210,6 +210,7 @@ export default new Vuex.Store({
 			const koko = state.cartItems.reduce((acc, curr) => {
 				const isExist = state.allItems.find((o) => o.id === curr.toString());
 				if (isExist) acc.push(isExist);
+				state.atest = acc;
 				return acc;
 			}, []);
 			return koko;
@@ -218,5 +219,15 @@ export default new Vuex.Store({
 			let mynum = state.cartItems.length;
 			return mynum;
 		},
+
+		cartTotal: (state) => {
+			let kolo = [];
+			state.atest.forEach(function (item) {
+				kolo.push(item.price)
+			});
+			let finalSum = kolo.reduce((a, b) => a + b);
+			return finalSum;
+
+		}
 	},
 });
