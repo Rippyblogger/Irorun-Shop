@@ -5,6 +5,7 @@ import Men from "../views/Men.vue";
 import Women from "../views/Women.vue";
 import Cart from "../views/Cart.vue";
 import All from "../views/All.vue";
+import NotFound from "../views/NotFound";
 
 Vue.use(VueRouter);
 
@@ -33,6 +34,11 @@ const routes = [
 		path: "/All",
 		name: "All",
 		component: All,
+	},
+	{
+    path: '*',
+    name: 'Not Found',
+		component: NotFound,
 	},
 
 	{
